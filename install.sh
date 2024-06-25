@@ -23,10 +23,7 @@ else
 fi
 
 # Install dependencies via paru
-
 sudo paru -S --noconfirm "${dependenciesaur[@]}"
-
-
 
 # Read Dependencies from file
 DEPENDENCIES_FILE="dependencies.txt"
@@ -39,7 +36,12 @@ else
 fi
 
 # Install dependencies via pacman
-
 sudo pacman -S --noconfirm "${dependencies[@]}"
 
-
+# Get custom dotfiles and move to .config
+cd ~
+git clone https://github.com/ramomolise/dotfiles.git
+cd dotfiles
+cp -r . ~/.config
+cd ..
+rm -rf dottfiles
